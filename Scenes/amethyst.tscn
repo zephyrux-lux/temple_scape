@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dw1ah2n4eq437"]
+
+[ext_resource type="Texture2D" uid="uid://ca4okd2v4vbd3" path="res://Assets/Collectables/Gems-Sheet.png" id="1_iyfve"]
+[ext_resource type="Script" uid="uid://dbhsn4hix68hb" path="res://Scripts/amethyst.gd" id="1_xkttu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkttu"]
+atlas = ExtResource("1_iyfve")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc183"]
+atlas = ExtResource("1_iyfve")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxphm"]
+atlas = ExtResource("1_iyfve")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tombg"]
+atlas = ExtResource("1_iyfve")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps14c"]
+atlas = ExtResource("1_iyfve")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g2ge"]
+atlas = ExtResource("1_iyfve")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jkgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkttu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkttu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc183")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxphm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tombg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps14c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g2ge")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[node name="Amethyst" type="Area2D" unique_id=1359957593]
+script = ExtResource("1_xkttu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016892191]
+sprite_frames = SubResource("SpriteFrames_1jkgk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.82740265
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1537563631]
+position = Vector2(1, 0)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(0, -8, -3, -5, -5, -1, -6, 2, -6, 5, -4, 7, -2, 8, 3, 8, 5, 7, 7, 5, 7, 2, 6, -1, 4, -5, 1, -8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cuxywn3s47nbx"]
+
+[ext_resource type="Texture2D" uid="uid://qvx28i53115p" path="res://Assets/Mapping/Tile set briks small-Sheet.png" id="1_lx4o8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8xv7p"]
+texture = ExtResource("1_lx4o8")
+4:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+5:3/0 = 0
+4:3/0 = 0
+5:4/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+9:5/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+8:3/0 = 0
+8:4/0 = 0
+8:5/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+14:4/0 = 0
+14:5/0 = 0
+14:6/0 = 0
+13:6/0 = 0
+12:6/0 = 0
+11:6/0 = 0
+11:5/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:2/0 = 0
+14:1/0 = 0
+6:6/0 = 0
+5:6/0 = 0
+4:6/0 = 0
+3:6/0 = 0
+3:5/0 = 0
+3:4/0 = 0
+3:3/0 = 0
+2:5/0 = 0
+1:5/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:2/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cj5ll"]
+sources/0 = SubResource("TileSetAtlasSource_8xv7p")
+
+[node name="Foreground" type="TileMapLayer" unique_id=1280142732]
+tile_set = SubResource("TileSet_cj5ll")

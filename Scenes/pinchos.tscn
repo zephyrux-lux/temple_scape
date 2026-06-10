@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c78galae71kfe"]
+
+[ext_resource type="Texture2D" uid="uid://brestcsn3v8a4" path="res://Assets/Mapping/Spikes-Sheet.png" id="1_d15tb"]
+[ext_resource type="Script" uid="uid://bjrcgd5ctm0bp" path="res://Scripts/pincho.gd" id="1_o6r8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6r8l"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_306q4"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naq8m"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umxcy"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwcnu"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lsgt"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d15tb"]
+atlas = ExtResource("1_d15tb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2n8nt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6r8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_306q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naq8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umxcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwcnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lsgt")
+}],
+"loop": false,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d15tb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6r8l"]
+size = Vector2(12, 7)
+
+[node name="Pinchos" type="Area2D" unique_id=110127556]
+script = ExtResource("1_o6r8l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=252525167]
+sprite_frames = SubResource("SpriteFrames_2n8nt")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=393597218]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_o6r8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

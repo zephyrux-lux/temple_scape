@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dmmw6qp6ng6yn"]
+
+[ext_resource type="Script" uid="uid://dwnul2wci51tx" path="res://Scripts/boulder.gd" id="1_4dqbg"]
+[ext_resource type="Texture2D" uid="uid://cg78s3aaooby1" path="res://Assets/interactives/Boulder-Sheet.png" id="1_gra7m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dqbg"]
+atlas = ExtResource("1_gra7m")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umxe1"]
+atlas = ExtResource("1_gra7m")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxn5h"]
+atlas = ExtResource("1_gra7m")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vf2y"]
+atlas = ExtResource("1_gra7m")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs4hv"]
+atlas = ExtResource("1_gra7m")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60nw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dqbg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umxe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxn5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vf2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs4hv")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ou4i2"]
+size = Vector2(16, 16)
+
+[node name="Boulder" type="CharacterBody2D" unique_id=2042200932]
+script = ExtResource("1_4dqbg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1860949629]
+sprite_frames = SubResource("SpriteFrames_60nw0")
+animation = &"roll"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479106015]
+shape = SubResource("RectangleShape2D_ou4i2")

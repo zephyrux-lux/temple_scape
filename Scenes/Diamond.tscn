@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ckb0ofafau3pp"]
+
+[ext_resource type="Script" uid="uid://i818na1277wf" path="res://Scripts/diamond.gd" id="1_v601g"]
+[ext_resource type="Texture2D" uid="uid://ca4okd2v4vbd3" path="res://Assets/Collectables/Gems-Sheet.png" id="2_vjxum"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu54h"]
+atlas = ExtResource("2_vjxum")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptpe0"]
+atlas = ExtResource("2_vjxum")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg8oc"]
+atlas = ExtResource("2_vjxum")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejmm3"]
+atlas = ExtResource("2_vjxum")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4j52"]
+atlas = ExtResource("2_vjxum")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le7s2"]
+atlas = ExtResource("2_vjxum")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77rxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu54h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptpe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg8oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejmm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4j52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le7s2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Diamond" type="Area2D" unique_id=76212876]
+script = ExtResource("1_v601g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2061184868]
+sprite_frames = SubResource("SpriteFrames_77rxi")
+animation = &"idle"
+autoplay = "idle"
+frame = 5
+frame_progress = 0.70708376
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=531580982]
+polygon = PackedVector2Array(-4, -8, 3, -8, 7, -4, 7, 0, 0, 7, -1, 7, -8, 0, -8, -4)

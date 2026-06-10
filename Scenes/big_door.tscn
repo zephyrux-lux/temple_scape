@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://mc2fkfqwm00w"]
+
+[ext_resource type="Texture2D" uid="uid://npaptbf2xwiq" path="res://Assets/Mapping/Big Door-Sheet.png" id="1_qwsf6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghdmv"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwsf6"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5gun"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sefg2"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rvhs"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lsb3"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb5tp"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5eeo"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwq8w"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdfhf"]
+atlas = ExtResource("1_qwsf6")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5gun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghdmv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwsf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5gun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sefg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rvhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lsb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb5tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5eeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwq8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdfhf")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="big_door" type="AnimatedSprite2D" unique_id=629512158]
+sprite_frames = SubResource("SpriteFrames_l5gun")
+animation = &"open"
+frame_progress = 0.5047835
