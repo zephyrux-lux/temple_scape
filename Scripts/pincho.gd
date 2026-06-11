@@ -6,8 +6,8 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body is Character:
-		await get_tree().create_timer(0.05).timeout
 		body.global_position = body.checkpoint_position
 		#if not body.invulnerable:
 		body.take_damage(2)
 		print("Toco pinchos")
+		print(body.life)

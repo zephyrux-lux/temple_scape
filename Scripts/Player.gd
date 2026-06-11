@@ -31,6 +31,8 @@ var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
 var checkpoint_position: Vector2
 var pushable_is_near: bool = false
+
+#Metodos
 func _ready() -> void:
 	checkpoint_position = global_position
 	anim.play("Idle")
@@ -90,7 +92,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("interact"):
 		anim.play("Active")
 		velocity.x = 0
-	if pushable_is_near and Input.is_action_pressed("push"):
+	if pushable_is_near and Input.is_action_pressed("push") and direccion != 0:
 		anim.play("push")
 	# 6. Ejecutar el movimiento
 	if life == 0:
@@ -109,6 +111,8 @@ func take_damage(dano:int):
 			life -= dano
 			print(life)
 			invulnerable = true
+			await get_tree().create_timer(1)
+			invulnerable = false
 		if life == 0:
 			print("Has muerto")
 			get_tree().reload_current_scene()

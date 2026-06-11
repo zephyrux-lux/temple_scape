@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpw2i0v5hlawt" path="res://Scenes/coin.tscn" id="5_hwnlj"]
 [ext_resource type="PackedScene" uid="uid://bmpqbojuaw3r6" path="res://Scenes/lever.tscn" id="5_jmhww"]
 [ext_resource type="PackedScene" uid="uid://dw1ah2n4eq437" path="res://Scenes/amethyst.tscn" id="5_ql53f"]
+[ext_resource type="PackedScene" uid="uid://274hclnnhwrk" path="res://Scenes/torch.tscn" id="7_lrmwy"]
 [ext_resource type="PackedScene" uid="uid://b23t8irabqvoe" path="res://Scenes/coin_small.tscn" id="10_xvap8"]
 [ext_resource type="PackedScene" uid="uid://denbwge400uk8" path="res://Scenes/small_platform.tscn" id="11_61jm7"]
 [ext_resource type="PackedScene" uid="uid://e4ir0dh7mo8y" path="res://Scenes/multiblock.tscn" id="11_rjvxo"]
@@ -355,6 +356,36 @@ position = Vector2(752, 144)
 [node name="Coin" parent="map" unique_id=1907057653 instance=ExtResource("5_hwnlj")]
 position = Vector2(680, 152)
 
+[node name="AnimatedSprite2D" parent="map" unique_id=778815412 instance=ExtResource("7_lrmwy")]
+position = Vector2(152, 203)
+
+[node name="AnimatedSprite2D2" parent="map" unique_id=163925561 instance=ExtResource("7_lrmwy")]
+position = Vector2(488, 203)
+
+[node name="AnimatedSprite2D3" parent="map" unique_id=133086362 instance=ExtResource("7_lrmwy")]
+position = Vector2(368, 160)
+
+[node name="AnimatedSprite2D4" parent="map" unique_id=265221572 instance=ExtResource("7_lrmwy")]
+position = Vector2(528, 436)
+
+[node name="AnimatedSprite2D7" parent="map" unique_id=937386505 instance=ExtResource("7_lrmwy")]
+position = Vector2(640, 464)
+
+[node name="AnimatedSprite2D8" parent="map" unique_id=1886178180 instance=ExtResource("7_lrmwy")]
+position = Vector2(640, 340)
+
+[node name="AnimatedSprite2D9" parent="map" unique_id=1159704770 instance=ExtResource("7_lrmwy")]
+position = Vector2(648, 180)
+
+[node name="AnimatedSprite2D10" parent="map" unique_id=1564273756 instance=ExtResource("7_lrmwy")]
+position = Vector2(744, 112)
+
+[node name="AnimatedSprite2D5" parent="map" unique_id=679420424 instance=ExtResource("7_lrmwy")]
+position = Vector2(280, 436)
+
+[node name="AnimatedSprite2D6" parent="map" unique_id=1520345193 instance=ExtResource("7_lrmwy")]
+position = Vector2(104, 424)
+
 [node name="Traps" type="Node2D" parent="." unique_id=423258827]
 position = Vector2(320, 160)
 
@@ -530,6 +561,9 @@ position = Vector2(0, -288)
 
 [node name="Player" parent="." unique_id=1678566359 instance=ExtResource("2_ecx5m")]
 position = Vector2(128, 211)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1387361271]
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
 
 [connection signal="body_entered" from="map/small-door" to="." method="_on_smalldoor_body_entered"]
 [connection signal="was_activated" from="interactive/lever3" to="." method="_on_lever_3_was_activated"]

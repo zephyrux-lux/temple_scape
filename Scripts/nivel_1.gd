@@ -96,8 +96,9 @@ func _on_lever_stair_was_activated(lever: Variant) -> void:
 func _on_lever_dropper_was_activated(lever: Variant) -> void:
 	gemKeyCollected = player.CollectedKeyGems["Amethyst"]
 	if gemKeyCollected:
-		level_door.is_open = true
 		level_door.anim.play("open")
+		await level_door.anim.animation_finished
+		level_door.is_open = true
 	else:
 		lever_dropper.reset()
 
@@ -105,4 +106,4 @@ func _on_lever_dropper_was_activated(lever: Variant) -> void:
 func _on_smalldoor_body_entered(body: Node2D) -> void:
 	if level_door.is_open:
 		print("Victory")
-		body.win()
+		get_tree().change_scene_to_file("res://Scenes/lobby.tscn")

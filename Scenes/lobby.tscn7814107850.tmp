@@ -469,11 +469,5 @@ position = Vector2(768, 232)
 
 [node name="Player" parent="." unique_id=2032927777 instance=ExtResource("2_u1o2k")]
 position = Vector2(158, 243)
-velocidad = null
-fuerza_salto = null
-life = null
-puntaje = null
-coyote_timer = null
-CollectedKeyGems = null
 
 [connection signal="body_entered" from="Doors/level1_door" to="." method="_on_level_1_door_body_entered"]

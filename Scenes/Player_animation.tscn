@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://xr8pqjb8iaqi"]
+
+[ext_resource type="Texture2D" uid="uid://gm83vr0x4q6h" path="res://Assets/player/Animations-Sheet.png" id="1_bf20i"]
+[ext_resource type="Script" uid="uid://ca7ifbcio81tc" path="res://player_animation.gd" id="1_i4eo6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4eo6"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yas7"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03ido"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1wqu"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nlo7"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2f2y"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iua0k"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_853jf"]
+atlas = ExtResource("1_bf20i")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5uje7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4eo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yas7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03ido")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1wqu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nlo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2f2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iua0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_853jf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=2018159399]
+script = ExtResource("1_i4eo6")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1308571568]
+sprite_frames = SubResource("SpriteFrames_5uje7")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.86823833
