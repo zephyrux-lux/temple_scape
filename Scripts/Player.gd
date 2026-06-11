@@ -111,7 +111,7 @@ func take_damage(dano:int):
 			life -= dano
 			print(life)
 			invulnerable = true
-			await get_tree().create_timer(1)
+			await get_tree().create_timer(0.5)
 			invulnerable = false
 		if life == 0:
 			print("Has muerto")
