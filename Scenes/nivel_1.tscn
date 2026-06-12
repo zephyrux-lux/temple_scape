@@ -352,6 +352,7 @@ collision_layer = 0
 
 [node name="Mummy" parent="map" unique_id=2143786280 instance=ExtResource("5_61jm7")]
 position = Vector2(752, 144)
+velocidad = null
 
 [node name="Coin" parent="map" unique_id=1907057653 instance=ExtResource("5_hwnlj")]
 position = Vector2(680, 152)

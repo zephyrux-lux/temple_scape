@@ -24,8 +24,12 @@ const START_LIFE: int = 6
 	"Emerald": false,
 	"Diamond": false
 }
-
 @onready var anim = $AnimatedSprite2D
+@onready var whip_hitbox = $WhipHitbox
+@onready var whip_collision = $WhipHitbox/CollisionShape2D
+@onready var whip_sprite = $WhipHitbox/Sprite2D
+
+
 var invulnerable = false
 var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
@@ -54,6 +58,18 @@ func _physics_process(delta: float) -> void:
 		anim.play("Attack")
 		velocity.x = 0
 		
+		await get_tree().create_timer(0.1).timeout
+		whip_collision.disabled = false
+		
+		whip_sprite.visible = true
+		
+		await get_tree().create_timer(0.15).timeout
+		whip_collision.disabled = true
+		whip_sprite.visible = false
+		
+		await anim.animation_finished
+		is_attacking = false
+		
 		# Esperamos a que la animación termine para soltar al personaje
 		await anim.animation_finished
 		is_attacking = false
@@ -74,6 +90,7 @@ func _physics_process(delta: float) -> void:
 	if direccion != 0:
 		velocity.x = direccion * velocidad
 		anim.flip_h = direccion < 0
+		whip_hitbox.scale.x = -1 if direccion < 0 else 1
 	else:
 		velocity.x = move_toward(velocity.x, 0, velocidad)
 
