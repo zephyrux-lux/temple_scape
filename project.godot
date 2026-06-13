@@ -28,6 +28,7 @@ window/stretch/mode="viewport"
 Treasure="Tesoros de todo el juego"
 elemento_puzzle=""
 plataforma_oculta="Platafomas que se mostraran mediante mecanismos"
+player=""
 
 [gui]
 

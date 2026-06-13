@@ -2,20 +2,21 @@ class_name Mummy
 extends CharacterBody2D
 
 @export var velocidad: float = 60.0
-var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # 1 significa derecha, -1 significa izquierda
 var direccion = 1 
+var deathPlayed: bool
+const DAMAGE: int = 1
+var life: int = 0
+var is_invulnerable:bool = false
+var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var player = get_tree().get_first_node_in_group("player")
 
 @onready var detector_piso = $RayCast2D
 @onready var anim = $AnimatedSprite2D
 @onready var track_area = $track_player
 @onready var hitbox: CollisionShape2D = $Hitbox/HitboxCollision
 @onready var collision: CollisionShape2D = $CollisionShape2D
-
-const DAMAGE: int = 1
-var life: int = 0
-var is_invulnerable:bool = false
 
 func _ready() -> void:
 	life = 4
@@ -25,13 +26,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravedad * delta
 	
+		
+		
 	if life == 0:
 		hitbox.disabled = true
 		collision.disabled = true
 		velocity.y = 0
 		velocity.x = 0
-		anim.play("death")
-		await  anim.animation_finished
+		if not deathPlayed:
+			anim.play("death")
+			await  anim.animation_finished
+			deathPlayed = true
+		anim.play("dead")
 		await  get_tree().create_timer(2).timeout
 		queue_free()
 	else:
@@ -44,11 +50,7 @@ func _physics_process(delta: float) -> void:
 			# Movemos el RayCast para que siempre esté al frente de la cara del enemigo
 			# (Cambia el 15 por la distancia que necesites según el ancho del enemy)
 			detector_piso.position.x = 6  *  direccion
-			if direccion == -1:
-				track_area.rotation_degrees = 180.00
-			else:
-				track_area.rotation_degrees = 0.00
-			
+			track_area.scale.x = direccion
 
 		# 3. Caminar siempre hacia adelante
 		velocity.x = direccion * velocidad
@@ -82,6 +84,7 @@ func _on_track_body_exited(body: Node2D) -> void:
 		velocidad = 60
 
 func take_damage(damage:int):
+	position.x = position.x + (20 * direccion)
 	if not is_invulnerable and life > 0:	
 		if damage > life:
 			life = 0
@@ -89,14 +92,12 @@ func take_damage(damage:int):
 			life -= damage
 			print(life)
 			is_invulnerable = true
-			await get_tree().create_timer(0.5)
+			await get_tree().create_timer(0.7)
 			is_invulnerable = false
-		if life == 0:
-			print("Has muerto")
 
-
-
-
+func get_knockback(knockbackDirection, knockbackForce):
+	knockbackDirection *= -1
+	await get_tree().create_timer(0.1).timeout
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "WhipHitbox":

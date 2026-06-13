@@ -23,6 +23,10 @@ region = Rect2(32, 32, 32, 32)
 atlas = ExtResource("1_avjbl")
 region = Rect2(64, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmgqh"]
+atlas = ExtResource("1_avjbl")
+region = Rect2(128, 96, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mwj61"]
 atlas = ExtResource("1_avjbl")
 region = Rect2(0, 96, 32, 32)
@@ -98,8 +102,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uhh1p")
 }],
-"loop": true,
+"loop": false,
 "name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmgqh")
+}],
+"loop": false,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -174,7 +186,7 @@ script = ExtResource("1_36voq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=581141987]
 sprite_frames = SubResource("SpriteFrames_sx0mw")
-animation = &"death"
+animation = &"dead"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2036162694]

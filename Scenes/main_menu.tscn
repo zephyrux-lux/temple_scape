@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwynsnfu67w2h" path="res://Scenes/fade_effect.tscn" id="6_opfnp"]
 [ext_resource type="PackedScene" uid="uid://xr8pqjb8iaqi" path="res://Scenes/Player_animation.tscn" id="7_cp0ys"]
 [ext_resource type="PackedScene" uid="uid://274hclnnhwrk" path="res://Scenes/torch.tscn" id="7_yhxw7"]
+[ext_resource type="AudioStream" uid="uid://8saysae1h8o" path="res://Sounds/main_menu.mp3" id="8_yhxw7"]
 
 [sub_resource type="Animation" id="Animation_yhxw7"]
 length = 1.5
@@ -152,6 +153,11 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 size_flags_vertical = 2
 texture = ExtResource("2_48xlc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=555018446]
+stream = ExtResource("8_yhxw7")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Control/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/option" to="." method="_on_option_pressed"]

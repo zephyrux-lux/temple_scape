@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b23t8irabqvoe" path="res://Scenes/coin_small.tscn" id="10_xvap8"]
 [ext_resource type="PackedScene" uid="uid://denbwge400uk8" path="res://Scenes/small_platform.tscn" id="11_61jm7"]
 [ext_resource type="PackedScene" uid="uid://e4ir0dh7mo8y" path="res://Scenes/multiblock.tscn" id="11_rjvxo"]
-[ext_resource type="AudioStream" uid="uid://ceaaogacltkq2" path="res://Sounds/SlowTheme.mp3" id="14_p3mfg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epurl"]
 texture = ExtResource("1_3givb")
@@ -565,12 +564,6 @@ position = Vector2(128, 211)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1387361271]
 color = Color(0.6255971, 0.6255971, 0.6255971, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=656061757]
-stream = ExtResource("14_p3mfg")
-volume_db = -0.7
-autoplay = true
-parameters/looping = true
 
 [connection signal="body_entered" from="map/small-door" to="." method="_on_smalldoor_body_entered"]
 [connection signal="was_activated" from="interactive/lever3" to="." method="_on_lever_3_was_activated"]
