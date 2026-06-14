@@ -9,4 +9,3 @@ func _ready() -> void:
 	anim.play("idle")
 	is_open = false
 	
-	

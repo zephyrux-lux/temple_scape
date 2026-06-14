@@ -6,11 +6,13 @@ extends CharacterBody2D
 # 1 significa derecha, -1 significa izquierda
 var direccion = 1 
 var deathPlayed: bool
-const DAMAGE: int = 1
+const DAMAGE: float = 12.50
 var life: int = 0
 var is_invulnerable:bool = false
 var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player = get_tree().get_first_node_in_group("player")
+var is_knocked_back: bool = false
+var knockback_timer: float = 0.0
 
 @onready var detector_piso = $RayCast2D
 @onready var anim = $AnimatedSprite2D
@@ -53,7 +55,14 @@ func _physics_process(delta: float) -> void:
 			track_area.scale.x = direccion
 
 		# 3. Caminar siempre hacia adelante
-		velocity.x = direccion * velocidad
+		if is_knocked_back:
+			knockback_timer -= delta
+			anim.play("damaged")
+			if knockback_timer <= 0:
+				is_knocked_back = false
+				anim.play("walk")
+		else:
+			velocity.x = direccion * velocidad
 	
 	move_and_slide()
 	
@@ -63,10 +72,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Character:
+		var damage_done = DAMAGE
 		await get_tree().create_timer(0.02).timeout
 		body.global_position = body.checkpoint_position
 		#if not body.invulnerable:
-		body.take_damage(DAMAGE)
+		body.take_damage(damage_done)
 		print("Mommia Toco")
 
 
@@ -83,7 +93,7 @@ func _on_track_body_exited(body: Node2D) -> void:
 		anim.play("walk") 
 		velocidad = 60
 
-func take_damage(damage:int):
+"""func take_damage(damage:int):
 	position.x = position.x + (20 * direccion)
 	if not is_invulnerable and life > 0:	
 		if damage > life:
@@ -94,6 +104,39 @@ func take_damage(damage:int):
 			is_invulnerable = true
 			await get_tree().create_timer(0.7)
 			is_invulnerable = false
+"""
+func take_damage(damage: int):
+	# === KNOCKBACK basado en posición del jugador ===
+	if player:  # por si acaso el player no está disponible
+		var knockback_direction = sign(global_position.x - player.global_position.x)
+		
+		# Si el jugador está a la izquierda → knockback a la derecha (positivo)
+		# Si el jugador está a la derecha  → knockback a la izquierda (negativo)
+		var knockback_force = 50   # Ajusta este valor según sientas (prueba 60~120)
+		
+		# Aplicamos el knockback (mejor usar velocity que position)
+		
+		# Pequeño impulso vertical opcional (queda más "golpeado")
+		# velocity.y = -80
+
+	# === DAÑO ===
+		if not is_invulnerable and life > 0:
+			velocity.x = knockback_direction * knockback_force
+			is_knocked_back = true
+			knockback_timer = 0.5
+			if damage > life:
+				life = 0
+			else:
+				life -= damage
+				print("Mummy life: ", life)
+				
+				is_invulnerable = true
+				anim.modulate = Color(1, 0.5, 0.5)  # Feedback visual (rojo)
+				
+				await get_tree().create_timer(0.6).timeout
+				
+				is_invulnerable = false
+				anim.modulate = Color(1, 1, 1)
 
 func get_knockback(knockbackDirection, knockbackForce):
 	knockbackDirection *= -1

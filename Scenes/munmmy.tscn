@@ -104,7 +104,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damaged",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -186,7 +186,7 @@ script = ExtResource("1_36voq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=581141987]
 sprite_frames = SubResource("SpriteFrames_sx0mw")
-animation = &"dead"
+animation = &"damaged"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2036162694]

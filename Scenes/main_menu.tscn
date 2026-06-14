@@ -129,6 +129,7 @@ text = "INICIAR"
 [node name="option" type="Button" parent="Control/VBoxContainer" unique_id=1602102927]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+disabled = true
 text = "OPCIONES
 "
 

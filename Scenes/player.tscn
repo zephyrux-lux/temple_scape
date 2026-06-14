@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://dh8p1jdkh6m1m" path="res://Scripts/Player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://gm83vr0x4q6h" path="res://Assets/player/Animations-Sheet.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://ckydd826mdp4d" path="res://Assets/player/whipe.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://8mmpisr5xjn2" path="res://Assets/Interface/life_bar_empty.png" id="4_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://d0on7rk2j3gqb" path="res://Assets/Interface/life_bar_frame.png" id="5_3smsa"]
+[ext_resource type="Texture2D" uid="uid://b1hdschkc6ns" path="res://Assets/Interface/life_bar_full.png" id="6_8erm5"]
+[ext_resource type="Texture2D" uid="uid://cgae0olui17ry" path="res://Assets/Interface/Gem_progress_under-over.png" id="7_8erm5"]
+[ext_resource type="Texture2D" uid="uid://cnpvt2qn7u3me" path="res://Assets/Interface/Gem_progress.png" id="8_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -317,7 +322,7 @@ size = Vector2(8, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
 size = Vector2(42, 6)
 
-[node name="Player" type="CharacterBody2D" unique_id=1678566359]
+[node name="Player" type="CharacterBody2D" unique_id=1678566359 groups=["player"]]
 script = ExtResource("1_cvnsp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=641806148]
@@ -351,3 +356,23 @@ texture = ExtResource("3_6t5aa")
 position = Vector2(25, 2)
 shape = SubResource("RectangleShape2D_vgqql")
 disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=263262535]
+scale = Vector2(5, 5)
+transform = Transform2D(5, 0, 0, 5, 0, 0)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=23091817]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("4_x3wgy")
+texture_over = ExtResource("5_3smsa")
+texture_progress = ExtResource("6_8erm5")
+
+[node name="gem_progress" type="TextureProgressBar" parent="CanvasLayer" unique_id=78370227]
+offset_left = 0.59999996
+offset_top = 16.0
+offset_right = 64.6
+offset_bottom = 56.0
+texture_under = ExtResource("7_8erm5")
+texture_over = ExtResource("7_8erm5")
+texture_progress = ExtResource("8_f1ek2")

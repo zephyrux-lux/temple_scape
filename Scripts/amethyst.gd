@@ -27,6 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 		print(body.puntaje)
 		is_collected = true
 		body.CollectedKeyGems[me] = true
+		body.gem_progress.value += 25
 		queue_free()
 
 func change_visibility(view):

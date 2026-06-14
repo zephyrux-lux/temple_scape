@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://50vok8odb5jn" path="res://Scenes/player.tscn" id="2_u1o2k"]
 [ext_resource type="PackedScene" uid="uid://cnfib6558mo1g" path="res://Scenes/small_door.tscn" id="4_avk8s"]
 [ext_resource type="PackedScene" uid="uid://mc2fkfqwm00w" path="res://Scenes/big_door.tscn" id="4_ruji2"]
+[ext_resource type="PackedScene" uid="uid://bmpqbojuaw3r6" path="res://Scenes/lever.tscn" id="6_bvheq"]
 [ext_resource type="PackedScene" uid="uid://274hclnnhwrk" path="res://Scenes/torch.tscn" id="7_4233d"]
+[ext_resource type="AudioStream" uid="uid://jgefrf3bk601" path="res://Sounds/lobby.mp3" id="9_aghey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u1o2k"]
 texture = ExtResource("1_y0s6v")
@@ -443,6 +445,11 @@ position = Vector2(272, -32)
 [node name="AnimatedSprite2D2" parent="Doors" unique_id=629512158 instance=ExtResource("4_ruji2")]
 position = Vector2(7, -56)
 
+[node name="levers" type="Node2D" parent="." unique_id=1926921813]
+
+[node name="leve1r" parent="levers" unique_id=118279697 instance=ExtResource("6_bvheq")]
+position = Vector2(376, 240)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=437859367]
 color = Color(0.67, 0.67, 0.67, 1)
 
@@ -476,4 +483,10 @@ puntaje = null
 coyote_timer = null
 CollectedKeyGems = null
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1289589909]
+stream = ExtResource("9_aghey")
+autoplay = true
+parameters/looping = true
+
 [connection signal="body_entered" from="Doors/level1_door" to="." method="_on_level_1_door_body_entered"]
+[connection signal="was_activated" from="levers/leve1r" to="." method="_on_lever_was_activated"]

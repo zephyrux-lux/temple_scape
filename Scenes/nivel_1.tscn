@@ -563,9 +563,6 @@ position = Vector2(0, -288)
 [node name="Player" parent="." unique_id=1678566359 instance=ExtResource("2_ecx5m")]
 position = Vector2(128, 211)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1387361271]
-color = Color(0.6255971, 0.6255971, 0.6255971, 1)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=656061757]
 stream = ExtResource("14_p3mfg")
 volume_db = -0.7

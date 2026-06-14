@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bd7bdkjfxtbcb"]
+
+[ext_resource type="Script" uid="uid://cig8e0eh2d6re" path="res://Scripts/final_screen.gd" id="1_1p0bu"]
+[ext_resource type="Texture2D" uid="uid://gm83vr0x4q6h" path="res://Assets/player/Animations-Sheet.png" id="1_7y7pp"]
+[ext_resource type="Texture2D" uid="uid://cpadvtw12k5ih" path="res://Assets/Enemies/Mummy-Sheet.png" id="2_dxnu7"]
+[ext_resource type="Texture2D" uid="uid://bmy4pfxu6p345" path="res://Assets/Enemies/Skeleton-Sheet.PNG" id="3_1p0bu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71mmf"]
+atlas = ExtResource("1_7y7pp")
+region = Rect2(32, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxnu7"]
+atlas = ExtResource("1_7y7pp")
+region = Rect2(64, 320, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p0bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71mmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxnu7")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvgan"]
+atlas = ExtResource("2_dxnu7")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywanh"]
+atlas = ExtResource("2_dxnu7")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w1rv"]
+atlas = ExtResource("2_dxnu7")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6x1h"]
+atlas = ExtResource("2_dxnu7")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjjwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvgan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywanh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w1rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6x1h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykm3u"]
+atlas = ExtResource("3_1p0bu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g05j2"]
+atlas = ExtResource("3_1p0bu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u135"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykm3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g05j2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="End" type="Node2D" unique_id=585685089]
+script = ExtResource("1_1p0bu")
+
+[node name="Control" type="CanvasLayer" parent="." unique_id=1101650696]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Control" unique_id=195434578]
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasModulate" unique_id=320909534]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasModulate" unique_id=1128081246]
+offset_left = 304.0
+offset_top = 152.0
+offset_right = 844.0
+offset_bottom = 253.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/CanvasModulate/VBoxContainer" unique_id=1860580455]
+layout_mode = 2
+text = "Gracias por Jugar.
+Tu feedback sera beinvenido.
+Escape del templo es un proyecto en solitario y el primero de muchos.
+Esta atento a nuevas actualizaciones y mejoras"
+horizontal_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/CanvasModulate/VBoxContainer" unique_id=1752720789]
+position = Vector2(272, 232)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1p0bu")
+animation = &"win"
+autoplay = "win"
+
+[node name="Button" type="Button" parent="Control/CanvasModulate/VBoxContainer" unique_id=1403246049]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Control/CanvasModulate/VBoxContainer" unique_id=640505459]
+position = Vector2(592, 224)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xjjwx")
+autoplay = "default"
+flip_h = true
+
+[node name="Button2" type="Button" parent="Control/CanvasModulate/VBoxContainer" unique_id=366969439]
+layout_mode = 2
+text = "Salir"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/CanvasModulate" unique_id=1420311337]
+position = Vector2(256, 392)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6u135")
+autoplay = "default"
+
+[connection signal="pressed" from="Control/CanvasModulate/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/CanvasModulate/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

@@ -2,19 +2,13 @@ class_name Character
 extends CharacterBody2D
 
 const COYOTE_TIME: float = 0.12
-const START_LIFE: int = 6
+const START_LIFE: int = 100
 # @export = es para hacer aparecer la caraceristica en el inspector
 @export_category("Configuración de Movimiento")
 @export var velocidad: float = 130.0
 @export var fuerza_salto: float = -250.0
-
-
-
-# Variable para saber si estamos atacando
-
-
 @export_category("Datos del Jugador")
-@export var life: int = 0
+@export var life: float = 0
 @export var puntaje: int = 0
 @export var coyote_timer: float = 0.0
 # Diccionario para rastrear gemas clave (usado en el Lobby)
@@ -24,23 +18,28 @@ const START_LIFE: int = 6
 	"Emerald": false,
 	"Diamond": false
 }
+
 @onready var anim = $AnimatedSprite2D
 @onready var whip_hitbox = $WhipHitbox
 @onready var whip_collision = $WhipHitbox/CollisionShape2D
 @onready var whip_sprite = $WhipHitbox/Sprite2D
-
+@onready var canvas_modulate: CanvasModulate = $CanvasModulate
+@onready var health_bar: TextureProgressBar = $CanvasLayer/TextureProgressBar
+@onready var gem_progress: TextureProgressBar = $CanvasLayer/gem_progress
 
 var invulnerable = false
 var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_attacking = false
 var checkpoint_position: Vector2
 var pushable_is_near: bool = false
-
+var is_damaged: bool = false
 #Metodos
 func _ready() -> void:
 	checkpoint_position = global_position
 	anim.play("Idle")
 	life = START_LIFE
+	health_bar.value = life
+	gem_progress.value = 0
 
 func _physics_process(delta: float) -> void:
 	# 1. Aplicar la Gravedad (Siempre se aplica, incluso atacando)
@@ -58,17 +57,13 @@ func _physics_process(delta: float) -> void:
 		anim.play("Attack")
 		velocity.x = 0
 		
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.15).timeout
 		whip_collision.disabled = false
-		
 		whip_sprite.visible = true
 		
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(0.06).timeout
 		whip_collision.disabled = true
 		whip_sprite.visible = false
-		
-		await anim.animation_finished
-		is_attacking = false
 		
 		# Esperamos a que la animación termine para soltar al personaje
 		await anim.animation_finished
@@ -120,12 +115,13 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func take_damage(dano:int):
-	if not invulnerable and life > 0:	
+func take_damage(dano:float):
+	if not invulnerable:	
 		if dano > life:
 			life = 0
 		else:
 			life -= dano
+			health_bar.value = life
 			print(life)
 			invulnerable = true
 			await get_tree().create_timer(0.5)

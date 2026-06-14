@@ -30,11 +30,10 @@ func _ready():
 	camera.limit_bottom = 864
 	gem_key.change_visibility(false)
 	lever_stair.set_visbility(false)
+	lever_stair.collision_mask = 10
 	restart_puzzle()
 	get_tree().call_group("plataforma_oculta","change_visibility",false)
 	get_tree().call_group("plataforma_oculta","change_collision",10)
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -82,6 +81,7 @@ func solving_puzle(lever, block):
 			gem_key.change_visibility(true)
 			gem_entry.play("solved")
 			lever_stair.set_visbility(true)
+			lever_stair.collision_mask = 1
 		else:
 			restart_puzzle()
 		
@@ -106,4 +106,4 @@ func _on_lever_dropper_was_activated(lever: Variant) -> void:
 func _on_smalldoor_body_entered(body: Node2D) -> void:
 	if level_door.is_open:
 		print("Victory")
-		get_tree().change_scene_to_file("res://Scenes/lobby.tscn")
+		get_tree().change_scene_to_file("res://Scenes/final_sreen.tscn")
