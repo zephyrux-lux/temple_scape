@@ -18,6 +18,7 @@ config/name="Temple_runner"
 run/main_scene="uid://c52cq2p4qgr25"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+config/tags=PackedStringArray("mvp", "prototipo")
 
 [display]
 
