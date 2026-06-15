@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://8mmpisr5xjn2" path="res://Assets/Interface/life_bar_empty.png" id="4_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://d0on7rk2j3gqb" path="res://Assets/Interface/life_bar_frame.png" id="5_3smsa"]
 [ext_resource type="Texture2D" uid="uid://b1hdschkc6ns" path="res://Assets/Interface/life_bar_full.png" id="6_8erm5"]
-[ext_resource type="Texture2D" uid="uid://cgae0olui17ry" path="res://Assets/Interface/Gem_progress_under-over.png" id="7_8erm5"]
 [ext_resource type="Texture2D" uid="uid://cnpvt2qn7u3me" path="res://Assets/Interface/Gem_progress.png" id="8_f1ek2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
@@ -373,6 +372,4 @@ offset_left = 0.59999996
 offset_top = 16.0
 offset_right = 64.6
 offset_bottom = 56.0
-texture_under = ExtResource("7_8erm5")
-texture_over = ExtResource("7_8erm5")
 texture_progress = ExtResource("8_f1ek2")

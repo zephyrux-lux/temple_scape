@@ -15,10 +15,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Temple_runner"
+config/tags=PackedStringArray("mvp", "prototipo")
 run/main_scene="uid://c52cq2p4qgr25"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-config/tags=PackedStringArray("mvp", "prototipo")
 
 [display]
 
